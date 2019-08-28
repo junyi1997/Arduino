@@ -25,17 +25,17 @@ void loop()
       ADC_V0[i]+=analogRead(pinADC[i]);
     }
     int read_raw1;int read_raw2;
-    adc2_config_channel_atten( ADC2_CHANNEL_8, ADC_ATTEN_6db );
+    adc2_config_channel_atten( ADC2_CHANNEL_8, ADC_ATTEN_11db );
     esp_err_t r = adc2_get_raw( ADC2_CHANNEL_8, ADC_WIDTH_12Bit, &read_raw1);
     //Serial.print(read_raw1);Serial.print("\t");
-    adc2_config_channel_atten( ADC2_CHANNEL_9, ADC_ATTEN_6db );
+    adc2_config_channel_atten( ADC2_CHANNEL_9, ADC_ATTEN_11db );
     esp_err_t r1 = adc2_get_raw( ADC2_CHANNEL_9, ADC_WIDTH_12Bit, &read_raw2); 
     //Serial.print(read_raw2);
     //Serial.println();
     ADC_V0[6]+=read_raw1;
     ADC_V0[7]+=read_raw2;
   }
-    for (int i=0;i<8;i++){ADC_V0[i]=ADC_V0[i]/k;Serial.print(ADC_V0[i]);Serial.print("\t");ADC_V0[i]=0;}
+    for (int i=0;i<8;i++){ADC_V0[i]=ADC_V0[i]/k;Serial.print(ADC_V0[i]);Serial.print("\t");}
     Serial.println();
     //delay(100);
 }
